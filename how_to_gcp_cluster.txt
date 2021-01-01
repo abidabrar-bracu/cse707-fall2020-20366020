@@ -1,0 +1,29 @@
+================================================================================================================================================
+CREATE VM AND ENABLE SSH
+================================================================================================================================================
+Step 0: Create a VM (easy). I prefer Ubuntu. (https://cloud.google.com/compute/docs/quickstart-linux)
+Step 1: Connect via using default browser SSH/gcloud based SSH (https://cloud.google.com/compute/docs/instances/connecting-advanced#provide-key)
+Step 2: Install python and other necessary libraries (I installed anaconda,
+        https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart)
+Step 3: Create a snapshot of this VM (https://cloud.google.com/compute/docs/disks/create-snapshots). Make sure they have same name format
+        for example, vm-0, vm-1, etc.
+Step 4: Create copy of this VM using this snapshot (https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+Step 5: Assign static internal IP addresses for all of the VMs
+Step 5: Create SSH public-private key using ssh-keygen (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys)
+Step 6: Add the public key to all of the VMs (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#locatesshkeys)
+Step 7: Copy the private key to all of the VMs (set it as default ssh private key, id_rsa), make sure to set proper chmod
+Step 8: Check if you can SSH to other VMs from one VM
+Step 9: (Optional) Edit the /etc/hosts files in all of the VMs to add the ip-address and hostname of other VMs 
+        (https://glmdev.medium.com/building-a-raspberry-pi-cluster-784f0df9afbd - Section 5.1)
+
+================================================================================================================================================
+ADDING NETWORK-ATTACHED STORAGE (NAS) FOR SHARED FILES
+================================================================================================================================================
+Step 1: Create a new instance of the Filestore. 1 TB HDD should be more than enough (https://cloud.google.com/filestore)
+Step 2: Mount the Filestore NAS to all of the VMs (https://cloud.google.com/filestore/docs/mounting-fileshares)
+Step 3: Make sure you attach to common path on all of the VMs, for example /sharedfs
+
+
+================================================================================================================================================
+INSTALLING SLURM
+================================================================================================================================================
